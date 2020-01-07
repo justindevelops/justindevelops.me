@@ -80,8 +80,11 @@ h3 {
 	overflow-x: hidden;
 	padding: 8px 0;
 	margin: auto;
-	margin-top: 30px;
+	margin-top: 50px;
 	height: 500px;
+}
+.main-display p {
+	padding: 2px;
 }
 
 .main-display img {
