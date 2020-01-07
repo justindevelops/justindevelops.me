@@ -35,20 +35,60 @@ li a:hover {
 }
 
 .sidebar {
+	display: block;
+	overflow: hidden;
 	border: 1px solid gray;
-	width: 30%;
+	width: 200px;
+	position: fixed;
+	z-index: 1;
+	background: #eee;
+	overflow-x: hidden;
+	padding: 8px 0;
+	margin-right: 5px;
+	height: auto;
+	top: 50%;
+	margin-top: -100px;
+	margin-left: 30px;
+}
+
+#container {
+	min-height: 200px;
+	_height: 200px;
+}
+
+.sidebar p,
+h3 {
+	text-align: center;
 }
 
 .sidebar img {
+	text-align: center;
 	border: 1px solid red;
 	width: 100%;
 	height: auto;
 }
 
 .main-display {
+	display: relative;
 	border: 1px solid green;
+	width: 50%;
+	max-width: 50%;
+	z-index: 1;
+	top: 20px;
+	left: 10px;
+	background: #eee;
+	overflow-x: hidden;
+	padding: 8px 0;
+	margin: auto;
+	margin-top: 30px;
+	height: 500px;
+}
+
+.main-display img {
+	text-align: center;
+	border: 1px solid red;
 	width: 100%;
-	max-width: 100%;
+	height: auto;
 }
 
 .navbar {
