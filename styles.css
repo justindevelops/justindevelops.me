@@ -27,13 +27,21 @@ body {
 	width: 50rem;
 }
 
-.main-row {
-	border: 1px solid red;
-}
-
 .vertical-center {
 	min-height: 100%;
 	min-height: 100vh;
 	display: flex;
 	align-items: center;
+}
+div.card.card-block {
+	width: 100%;
+	border: 1px solid yellow;
+}
+
+.arrow img {
+	min-height: 5%;
+	max-height: 5%;
+	display: flex;
+	align-items: center;
+	height: 5%;
 }
