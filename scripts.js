@@ -55,15 +55,13 @@ class LinkedList {
 	}
 
 	updateButtons() {
-		dotnav.forEach((dot) => {
-			console.log(dot.id);
-			console.log(this.getPositionID());
-			if (dot.id == this.getPositionID()) {
-				dot.style.backgroundColor = 'black';
+		for (var current = this.head; current; current = current.next) {
+			if (current.element.id == this.getPositionID()) {
+				current.element.style.backgroundColor = 'black';
 			} else {
-				dot.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+				current.element.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
 			}
-		});
+		}
 	}
 
 	//future implementation perhaps
@@ -78,26 +76,25 @@ dotnav.forEach((dot) => {
 	ll.add(dot);
 
 	/* add all of this functionality later
-    
-	//detects when any dots are clicked on
-	dot.addEventListener('click', (e) => {
-		//clear out content
-		//jump to that page
-		//update position in linkedlist
-	});
+        //detects when any dots are clicked on
+        dot.addEventListener('click', (e) => {
+            //clear out content
+            //jump to that page
+            //update position in linkedlist
+        });
 
-	//change the appearance of the dot if it's being hovered over
-	dot.addEventListener('mouseover', (e) => {
-		dot.style.backgroundColor = 'black';
-	});
+        //change the appearance of the dot if it's being hovered over
+        dot.addEventListener('mouseover', (e) => {
+            dot.style.backgroundColor = 'black';
+        });
 
-	//restore the appearance of the dot when the mouse is gone
-	dot.addEventListener('mouseout', (e) => {
-		if (ll.position.element.id != dot.id) {
-			console.log('hhh');
-			dot.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-		}
-    });
+        //restore the appearance of the dot when the mouse is gone
+        dot.addEventListener('mouseout', (e) => {
+            if (ll.position.element.id != dot.id) {
+                console.log('hhh');
+                dot.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+            }
+        });
     */
 });
 
@@ -120,15 +117,15 @@ function updateMainDisplay() {
 	//change what shows in the main display window
 	id = ll.getPositionID();
 	if (id == 'about') {
+		$('.content').html('Site under construction!');
+	} else if (id == 'experience') {
 		$('.content').html(
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 		);
-	} else if (id == 'experience') {
+	} else if (id == 'projects') {
 		$('.content').html(
 			'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
 		);
-	} else if (id == 'projects') {
-		$('.content').html('test');
 	} else if (id == 'contact') {
 		$('.content').html(
 			'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
