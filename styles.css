@@ -8,6 +8,37 @@ body {
 	height: 100%;
 }
 
+.container,
+.container-fluid {
+	border: 1px solid yellow;
+	width: 100vw;
+}
+
+#main-display {
+	border-radius: 5px;
+	padding: 10px;
+	max-width: 800px;
+	min-width: 420px;
+	width: 100vw;
+	position: relative;
+}
+
+.row {
+	width: 100vw;
+	position: relative;
+	max-width: 100%;
+}
+
+#main-display .content {
+	border-radius: 5px;
+	border: 1px solid red;
+	background: #e8e8e8;
+	height: 300px;
+	width: 100%;
+	padding: 5px;
+	min-width: 420px;
+}
+
 .nav-item {
 	color: #c0c0c0; /* navbar text color*/
 }
@@ -42,35 +73,22 @@ div.card.card-block {
 .arrow img {
 	min-height: 5%;
 	max-height: 5%;
-	display: flex;
-	align-items: center;
 	height: 5%;
-}
-
-.main-display {
-	border-radius: 5px;
-	padding: 10px;
-	max-width: 800px;
-}
-
-.main-display .content {
-	border-radius: 5px;
-	border: 1px solid red;
-	background: white;
-	height: 300px;
-	width: 100%;
-	padding: 5px;
 }
 
 .dot-nav {
 	border: 1px solid white;
 	text-align: center;
+	min-width: 420px;
 }
 
 .dot {
-	height: 10px;
-	width: 10px;
-	background-color: #bbb;
-	border-radius: 50%;
+	margin-right: 5px;
+	margin-left: 5px;
+	height: 9px;
+	width: 9px;
+	background-color: #e8e8e8;
 	display: inline-block;
+	border: 1px solid #686868;
+	background-color: rgba(255, 255, 255, 0.3);
 }

@@ -9,7 +9,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<script src="scripts.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-transparent navbar-dark fixed-top">
@@ -27,23 +26,23 @@
 </nav>
 
 <div class="container vertical-center">
-	<div class="row vertical-center">
-		<div class="col-1 arrow" style="border: 1px solid red;">
+	<div class="row vertical-center" style="float: none; margin: 0 auto;">
+		<div class="col-1 arrow" id="left-arrow" style="border: 1px solid red;">
 			<img src="assets/leftarrow_resize.png" style="float: right;">
 		</div>
-		<div class="col-10 main-display" style="border: 1px solid red;">
+		<div class="col-10 container" id="main-display">
 			<div class="dot-nav">
-				<span class="dot"></span>
-				<span class="dot"></span>
-				<span class="dot"></span>
-				<span class="dot"></span>
+				<span class="dot" id="about"></span>
+				<span class="dot" id="experience"></span>
+				<span class="dot" id="projects"></span>
+				<span class="dot" id="contact"></span>
 			</div>
-			<div class="content">
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+			<div class="content" style="text-align: center;">
+				<!-- JAVASCRIPT -->
 			</div>
 		</div>
-		<div class="col-1 arrow" style="border: 1px solid red;">
-			<img src="assets/rightarrow_resize.png">
+		<div class="col-1 arrow" id="right-arrow" style="border: 1px solid red;">
+			<img src="assets/rightarrow_resize.png" style="float: left;">
 		</div>
 	</div>
 </div>
@@ -65,5 +64,6 @@
 		</li>
 	</ul>
 </nav>
+<script src="scripts.js"></script>
 </body>
 </html>
