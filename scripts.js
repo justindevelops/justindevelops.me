@@ -1,21 +1,25 @@
 class Node {
-	// constructor
-	constructor(element) {
+	// constructor that holds the node instance, two pointers to the next and previous in line, and a directory URL for the background
+	constructor(element, directory) {
 		this.element = element;
 		this.next = null;
 		this.previous = null;
+		this.backgroundDirectory = directory;
 	}
 }
 
 class LinkedList {
+	// constructor that holds a spot for the front of the list, the current index we are in, and the size
 	constructor() {
 		this.head = null;
 		this.position = null;
 		this.size = 0;
+		this.left_arrow = document.getElementById('left-arrow');
+		this.right_arrow = document.getElementById('right-arrow');
 	}
 
-	add(element) {
-		var node = new Node(element);
+	add(element, directory) {
+		var node = new Node(element, directory);
 		var current;
 
 		if (this.head == null) {
@@ -54,7 +58,21 @@ class LinkedList {
 		return this.position.element.id;
 	}
 
+	getDirectory() {
+		return this.position.backgroundDirectory;
+	}
+
 	updateButtons() {
+		//depending on which page we're on, either show or hide the left and right arrows
+		if (this.getPositionID() == 'about') {
+			this.showArrow(this.left_arrow, false);
+		} else if (this.getPositionID() == 'experience' || this.getPositionID() == 'projects') {
+			this.showArrow(this.left_arrow, true);
+			this.showArrow(this.right_arrow, true);
+		} else if (this.getPositionID() == 'contact') {
+			this.showArrow(this.right_arrow, false);
+		}
+
 		for (var current = this.head; current; current = current.next) {
 			if (current.element.id == this.getPositionID()) {
 				current.element.style.backgroundColor = 'black';
@@ -64,38 +82,51 @@ class LinkedList {
 		}
 	}
 
+	showArrow(arrow, isVisible) {
+		if (isVisible) {
+			//make it 1.0 opacity
+			arrow.style.opacity = '1.0';
+			arrow.style.filter = 'alpha(opacity=100)';
+		} else {
+			//make it 0 capacity
+			arrow.style.opacity = '0.0';
+			arrow.style.filter = 'alpha(opacity=0)';
+		}
+	}
+
 	//future implementation perhaps
 	jumpPosition(id) {}
 }
 
+body = document.querySelector('body');
+for (var i = 0; i < 4; i++) {}
+
 var ll = new LinkedList();
 
+body.addEventListener('mouseover', (e) => {
+	console.log('hoverin');
+	/*
+	body.style.background = "linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .7)), url('assets/bg3.jpeg')";
+	body.style.backgroundSize = 'cover';
+	body.style
+
+	background-color: black;
+	background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .7)), url("assets/bg4.jpeg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+	*/
+});
+
 dotnav = document.querySelectorAll('span.dot');
+let index = 1;
 dotnav.forEach((dot) => {
+	let directory = 'assets/bg' + index.toString() + '.jpeg';
+
 	//add to LinkedList
-	ll.add(dot);
-
-	/* add all of this functionality later
-        //detects when any dots are clicked on
-        dot.addEventListener('click', (e) => {
-            //clear out content
-            //jump to that page
-            //update position in linkedlist
-        });
-
-        //change the appearance of the dot if it's being hovered over
-        dot.addEventListener('mouseover', (e) => {
-            dot.style.backgroundColor = 'black';
-        });
-
-        //restore the appearance of the dot when the mouse is gone
-        dot.addEventListener('mouseout', (e) => {
-            if (ll.position.element.id != dot.id) {
-                console.log('hhh');
-                dot.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-            }
-        });
-    */
+	ll.add(dot, directory);
+	index++;
 });
 
 arrows = document.querySelectorAll('.arrow');
@@ -111,6 +142,7 @@ arrows.forEach((arrow) => {
 
 function updateMainDisplay() {
 	ll.updateButtons();
+
 	//clear the window before writing to it
 	$('.content').html('');
 
@@ -133,6 +165,13 @@ function updateMainDisplay() {
 	} else {
 		console.log('DEBUG');
 	}
+	let x = ll.getDirectory();
+	body.style.background = "linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .7)), url('" + x + "')";
+	body.style.backgroundSize = 'cover';
+	body.style.backgroundRepeat = 'no-repeat';
+	body.style.backgroundAttachment = 'fixed';
+	body.style.backgroundPosition = 'center';
+	body.style.backgroundColor = 'black';
 }
 
 updateMainDisplay();

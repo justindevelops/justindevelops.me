@@ -1,11 +1,7 @@
 body {
-	background-color: black;
-	background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .7)), url("assets/bg.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
 	overflow: hidden;
 	height: 100%;
+	width: 100%;
 }
 
 .container,
@@ -29,31 +25,32 @@ body {
 }
 
 #main-display .content {
-	/* border-radius: 5px; */
-	background: #e8e8e8;
-	height: 300px;
+	height: 500px;
 	width: 100%;
 	padding: 5px;
 	min-width: 400px;
+	text-align: center;
 }
 
 .nav-item {
-	color: #c0c0c0; /* navbar text color*/
+	color: #c0c0c0; /* navbar text color */
 }
 
 .nav-item img {
+	display: inline-block;
 	margin: 2px 20px;
+	filter: invert(1);
 }
 
 .navbar.fixed-bottom {
-	background-color: black;
+	background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .7));
 	height: 25px;
 	font-size: 11px;
 	border-top: 1px solid #272727;
 }
 
-.card {
-	width: 50rem;
+.navbar.fixed-top {
+	background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .1));
 }
 
 .vertical-center {
@@ -61,10 +58,6 @@ body {
 	min-height: 100vh;
 	display: flex;
 	align-items: center;
-}
-
-div.card.card-block {
-	width: 100%;
 }
 
 .arrow img {
