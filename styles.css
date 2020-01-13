@@ -11,6 +11,7 @@ body {
 
 #main-display {
 	border-radius: 5px;
+	background: rgba(0, 0, 0, 0.15);
 	padding: 10px;
 	max-width: 800px;
 	min-width: 420px;
@@ -25,11 +26,13 @@ body {
 }
 
 #main-display .content {
+	background: rgba(0, 0, 0, 0.2);
 	height: 500px;
 	width: 100%;
 	padding: 5px;
 	min-width: 400px;
 	text-align: center;
+	color: #c0c0c0;
 }
 
 .nav-item {

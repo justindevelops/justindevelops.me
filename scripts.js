@@ -37,18 +37,10 @@ class LinkedList {
 	}
 
 	move(id) {
-		if (id == 'right-arrow') {
-			if (this.getPositionID() == 'contact') {
-				console.log("Can't scroll right.");
-			} else {
-				this.position = this.position.next;
-			}
-		} else if (id == 'left-arrow') {
-			if (this.getPositionID() == 'about') {
-				console.log("Can't scroll left.");
-			} else {
-				this.position = this.position.previous;
-			}
+		if (id == 'right-arrow' && this.getPositionID() != 'contact') {
+			this.position = this.position.next;
+		} else if (id == 'left-arrow' && this.getPositionID() != 'about') {
+			this.position = this.position.previous;
 		} else {
 			console.log('DEBUG');
 		}
@@ -98,27 +90,13 @@ class LinkedList {
 	jumpPosition(id) {}
 }
 
+//use this to toggle the backgrounds
 body = document.querySelector('body');
-for (var i = 0; i < 4; i++) {}
 
+//this LL is pretty much the handler for everything
 var ll = new LinkedList();
 
-body.addEventListener('mouseover', (e) => {
-	console.log('hoverin');
-	/*
-	body.style.background = "linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .7)), url('assets/bg3.jpeg')";
-	body.style.backgroundSize = 'cover';
-	body.style
-
-	background-color: black;
-	background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .7)), url("assets/bg4.jpeg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	background-position: center;
-	*/
-});
-
+//centers everything around the dots at the bottom
 dotnav = document.querySelectorAll('span.dot');
 let index = 1;
 dotnav.forEach((dot) => {
@@ -129,15 +107,36 @@ dotnav.forEach((dot) => {
 	index++;
 });
 
+//edits the left and right arrows
 arrows = document.querySelectorAll('.arrow');
 arrows.forEach((arrow) => {
 	arrow.addEventListener('click', (e) => {
-		console.log(arrow.id);
 		//update position
 		ll.move(arrow.id);
 		//change display based on position
 		updateMainDisplay();
 	});
+});
+
+//the links at the top right of the page
+links = document.querySelectorAll('.nav-item img');
+links.forEach((link) => {
+	link.addEventListener('mouseover', (e) => {
+		console.log('hi');
+		link.style.filter = 'invert(0)';
+	});
+	link.addEventListener('mouseout', (e) => {
+		link.style.filter = 'invert(1)';
+	});
+});
+
+//the copyright text at the bottom right of the page
+copyright = document.getElementById('copyright');
+copyright.addEventListener('mouseover', (e) => {
+	copyright.style.letterSpacing = '2px';
+});
+copyright.addEventListener('mouseout', (e) => {
+	copyright.style.letterSpacing = '0px';
 });
 
 function updateMainDisplay() {
@@ -165,8 +164,12 @@ function updateMainDisplay() {
 	} else {
 		console.log('DEBUG');
 	}
-	let x = ll.getDirectory();
-	body.style.background = "linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .7)), url('" + x + "')";
+	updateBackground(ll.getDirectory());
+}
+
+function updateBackground(dir) {
+	//reset all background attributes
+	body.style.background = "linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url('" + dir + "')";
 	body.style.backgroundSize = 'cover';
 	body.style.backgroundRepeat = 'no-repeat';
 	body.style.backgroundAttachment = 'fixed';
